@@ -172,7 +172,7 @@ using namespace std;
 			cout << "Resultado: " << endl;
 			cout  << this->coeficientes[0];
 			for (int i = 1 ; i < this->tamaCoefs; i++){
-				if(fabs(this->coeficientes[i]>CERO)){
+				if(fabs(this->coeficientes[i]>CERO) || this->coeficientes[i]!=0){
 					if(this->coeficientes[i]==1){
 						cout  << " + " << "x^" << i;
 					}
@@ -218,7 +218,7 @@ using namespace std;
 		}
 
 		void minimosCuadrados::usar(){
-					cout << "MÃ­nimos Cuadrados" << endl;
+					cout << "Mínimos Cuadrados" << endl;
 					int meh = 0;
 					do{
 						cout << "#############################################################################" << endl;
@@ -231,10 +231,10 @@ using namespace std;
 						double orden=-1;
 						switch (meh){
 						case 1:
-							cout << "Resolviendo puntos, ingrese el grado que quiere resolver(-1 para automÃ¡tico):";
+							cout << "Resolviendo puntos, ingrese el grado que quiere resolver(-1 para automático):";
 							cin >> orden;
-							if(orden == -1){
-								orden = 5;//this->ordenOptimo();
+							if(orden == -1 || orden > this->tama-1){
+								orden = this->tama-1;//this->ordenOptimo();
 
 							}
 							this->resolverMinimosCuadrados(orden);
